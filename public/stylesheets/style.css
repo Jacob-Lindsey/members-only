@@ -1,0 +1,184 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+input[type="text"],
+textarea {
+  border: 1px solid #ced4da75 !important;
+}
+
+input:focus {
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+a {
+  color: #afcfe4;
+}
+
+.tdata {
+  line-height: 2rem;
+}
+
+.close {
+  color: #dadada;
+  text-shadow: none;
+}
+
+.close:hover {
+  color: #ffffff;
+}
+
+.darker-bg {
+  background-color: #292e3367;
+}
+
+.divider {
+  background-color: #f8f9fa21 !important;
+}
+
+.fa-pencil {
+  cursor: pointer;
+}
+
+.modal-header,
+.modal-footer {
+  border-bottom-color: transparent;
+  border-top-color: transparent;
+}
+
+.badge-text {
+  font-size: 1rem;
+  line-height: 0.9rem;
+}
+
+.confirm-text {
+  background-color: rgb(37, 37, 37);
+  border-radius: 6px;
+  color: rgb(243, 76, 76);
+  line-height: 1.4rem;
+  margin: 0;
+  padding: 0.25rem 0.5rem;
+}
+
+.close-button {
+  right: 0.6rem;
+  top: -0.5rem;
+}
+
+.card-canvas {
+  background-color: rgb(37, 37, 37);
+  border-radius: 10px;
+}
+
+.form-canvas {
+  background-color: rgb(37, 37, 37);
+  border-radius: 10px;
+  padding: 4rem 5rem;
+}
+
+.message-wrapper {
+
+}
+
+.message-wrapper:nth-child(odd) {
+  background-color: rgb(37, 37, 37);
+}
+
+.message-wrapper:nth-child(even) {
+  background-color: rgb(48, 48, 48);
+}
+
+.message-wrapper-left {
+
+}
+
+.message-wrapper-right {
+
+}
+
+.message-wrapper-avatar-default {
+
+}
+
+.message-wrapper-avatar-member {
+  background-position: center center;
+  background-size: cover;
+  border-radius: 20%;
+  cursor: pointer;
+  height: 120px;
+  width: 120px;
+}
+
+.Charlie {
+  background-image: url("../images/charlie.jpeg");
+}
+
+.Matthew {
+  background-image: url("../images/cricket.jpg");
+}
+
+.Dee {
+  background-image: url("../images/dee.jpeg");
+}
+
+.Dennis {
+  background-image: url("../images/dennis.jpg");
+}
+
+.Frank {
+  background-image: url("../images/frank.png");
+}
+
+.Ronald {
+  background-image: url("../images/mac.jpg");
+}
+
+.message-title {
+  color: rgba(248,249,250,0.7);
+  font-size: 1.5rem;
+  font-weight: 800;
+  text-indent: 0.75rem;
+}
+
+.message-text {
+  font-size: 1rem;
+}
+
+.message-info {
+  font-size: 0.85rem;
+}
+
+.avatar-icon {
+
+}
+
+.message-author {
+
+}
+
+.message-date {
+
+}
+
+.delete-message {
+
+}
+
+.username-layout {
+  
+}
+
+.create-message {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.2rem;
+}
+
+.create-message > a {
+  color: rgb(15, 226, 15);
+}
+
+.toggle-icon {
+  font-size: 2rem;
+}

@@ -1,0 +1,23 @@
+extends layout
+
+block content
+    section#login
+        div.container
+            div.row.d-flex.flex-column.align-items-center
+                div.col-xs-12.form-canvas
+                    div.form-wrap
+                        p.h2 Log in with your username
+                        form#login-form(action="/login" method='POST' autocomplete='on')
+                            div.form-group.mt-4
+                                label.sr-only(for='username') Username
+                                input#username.form-control(type='text' name='username' placeholder='Username')
+                            div.form-group.mt-4
+                                label.sr-only(for='password') Password
+                                input#password.form-control(type='password' name='password' placeholder='Password')
+                            div.form-check
+                                input#showPassword.form-check-input(type='checkbox' value='')
+                                label.form-check-label(for="showPassword") Show password
+                            input#btn-login.btn.btn-outline-info.btn-lg.btn-block.mt-4(type='submit' value='Log in')
+                            
+    script(src='javascripts/togglePasswordVisibility.js')
+

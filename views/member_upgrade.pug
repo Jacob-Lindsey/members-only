@@ -1,0 +1,24 @@
+extends layout
+
+block content
+    div.container
+        div.row.d-flex.flex-column.align-items-center
+            div.col-10.form-canvas
+                div.form-wrap
+                    if (!memberUser.isAdmin)
+                        div.d-flex.justify-content-between
+                            p.h2 Upgrade your member status
+                            if memberUser
+                                p Current Member Tier: &nbsp;
+                                    span.badge.badge-pill.badge-warning.text-dark.px-3.py-2.badge-text #{memberUser.memberLevel}
+                        form#login-form(action="/upgrade" method='POST')
+                            div.form-group.mt-4.pr-5
+                                label.sr-only(for='secretCode') Enter your upgrade code
+                                input#secretCode.form-control.bg-dark.text-light(type='text' name='secretCode' placeholder='Enter your upgrade code')
+                            div.d-flex
+                                input#btn-login.btn.btn-outline-success.btn-lg.mt-4.mr-4(type='submit' value='Upgrade')
+                                input#btn-login.btn.btn-outline-danger.btn-lg.mt-4(type='reset' value='Reset')
+                    else
+                        p Welcome Back #{memberUser.firstName}
+                        br
+                        p Admin Status: #{memberUser.isAdmin}

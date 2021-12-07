@@ -1,0 +1,23 @@
+extends layout
+
+block content
+    div.row
+        div.container.col-12.p-4.card-canvas
+            p.h4.mb-4.ml-2.pl-2.pt-2 Members
+            table.table.table-hover
+                thead
+                    tr
+                        th.text-light(scope='col') Username
+                        th.text-light(scope='col') First Name
+                        th.text-light(scope='col') Last Name
+                        th.text-light(score='col') Member Tier
+                    tbody
+                        each user in users
+                            tr
+                                th.text-light.tdata(scope='row') #{user.username}
+                                td.text-light.tdata #{user.firstName}
+                                td.text-light.tdata #{user.lastName}
+                                if (user.isAdmin)
+                                    td.text-light.tdata #{user.memberLevel} &nbsp;(admin)
+                                else
+                                    td.text-light.tdata #{user.memberLevel}

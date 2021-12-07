@@ -1,0 +1,20 @@
+extends layout
+
+block content
+    div.container
+        div.row.d-flex.flex-column.align-items-center
+            div.col-sm-12.form-canvas
+                div.form-wrap
+                    p.h2 Create a new message
+                    form#login-form(action="/create-message" method='POST')
+                        div.form-group.mt-4
+                            label.sr-only(for='messageTitle') Message Title
+                            input#messageTitle.form-control.bg-dark.text-light(type='text' name='messageTitle' placeholder='Message Title')
+                        div.form-group.mt-4
+                            label.sr-only(for='messageText') Message Body
+                            textarea#messageText.form-control.bg-dark.text-light(cols="30", rows="5" type='text' name='messageText' placeholder='Message Body')
+                        div.d-flex
+                            button#btn-login.btn.btn-outline-success.btn-lg.mt-4.mr-4(type='submit') Create Message
+                            input#btn-login.btn.btn-outline-danger.btn-lg.mt-4(type='reset' value='Reset') 
+            if (errors)
+                p #{errors}

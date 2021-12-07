@@ -1,0 +1,95 @@
+extends layout
+
+block content
+
+  if (messages)
+    div.container.d-flex.flex-column.align-items-center
+
+      each message in messages
+        div.message-wrapper.d-flex.w-75.px-2.pb-3.pt-4
+          div.message-wrapper-left
+
+            if (!currentUser || !currentUser.memberLevel > 0)
+
+              div.message-wrapper-avatar-default
+
+            else
+              if (currentUser && currentUser.memberLevel > 0)
+                a(href='/member/' + message.user._id)
+                  div.message-wrapper-avatar-member.mb-3.ml-3(class=message.user.firstName)
+
+          div.message-wrapper-right.w-100.position-relative
+
+            if (currentUser && currentUser.memberLevel > 0)
+
+              p.h4.px-1.pb-2.message-title= message.title
+              p.pl-4.pr-3.py-2.message-text= message.text
+
+              if (currentUser && currentUser.isAdmin)
+                button.close.close-button.position-absolute(type='button' data-toggle='modal' data-target='#confirmDeleteMessage'+message._id aria-label='Close')
+                  span.text-light(aria-hidden='true') &times;
+                
+                div.modal.fade(id='confirmDeleteMessage'+message._id tabindex='-1' role='dialog' aria-labelledby='confirmDeleteMessageTitle' aria-hidden='true')
+                  div.modal-dialog.modal-dialog-centered.modal-md(role='document')
+                    div.modal-content.bg-dark
+                      div.modal-header.darker-bg
+                        h5#confirmDeleteMessageLongTitle.modal-title.ml-2 Delete Message
+                        button.close(type='button' data-dismiss='modal' aria-label='Close')
+                          span(aria-hidden='true') &times;
+                      div.modal-body.pt-5
+                        div.container
+                          div.row.d-flex.flex-column.align-items-center
+                            div.col-10
+                              div.form-wrap
+                                p.text-center Are you sure you want to delete this message?
+                                //  span.d-flex
+                                //  p Please type &nbsp;
+                                //  pre.confirm-text Delete Message
+                                //  p &nbsp; to drop this message from the database
+                                form(id='delete'+message._id action='/delete-message/'+message._id method='POST')
+                                  div.form-group.mt-4.pr-5
+                                    label.sr-only(for='deleteMessage') Delete Message
+                                    // input#deleteMessage.form-control.bg-dark.text-light(type='text' name='deleteMessage')
+                                    input(id='messageId' type='hidden' name='messageId' value=message._id)
+                      div.modal-footer.darker-bg
+                        button.btn.btn-info(type='button' data-dismiss='modal') Close
+                        button.btn.btn-danger(type='submit' form='delete'+message._id) Confirm
+
+              div.message-info.mt-4.pr-3.py-2                  
+                div.d-flex.justify-content-end
+                  p
+                    i.fa.fa-user(aria-hidden='true') &nbsp;&nbsp;
+                    if (message.user._id == currentUser._id)
+                      a(href='/member/' + message.user._id) &nbsp;&nbsp;Me&nbsp;&nbsp;
+                    else  
+                      a(href='/member/' + message.user._id) #{message.user.username}
+                    span - (#{message.user.firstName} #{message.user.lastName})
+                  p.ml-4.message-date
+                    i.fa.fa-calendar(aria-hidden='true')
+                    p &nbsp;&nbsp; #{message.date}
+
+            else
+
+              p.h4.px-1.py-b.message-title= message.title
+              p.pl-4.pr-3.py-2.message-text= message.text
+
+              div.message-info.mt-4.pr-3.py-1
+
+                if (currentUser && currentUser.memberLevel > 0)
+                  div.message-wrapper-avatar-member
+
+                else
+                  div.message-wrapper-avatar-default
+                div.d-flex.justify-content-end
+                  p
+                    i.fa.fa-user(aria-hidden='true')
+                    p &nbsp;&nbsp;Hidden
+                  p.ml-4.message-date 
+                    i.fa.fa-calendar(aria-hidden='true')
+                    p &nbsp;&nbsp;Hidden
+
+            if (currentUser && currentUser.admin)
+              div.delete-message
+                form(action="" method="POST")
+                  input#messageId(type="hidden", name="messageId", required="true", value=message._id)
+                  button(type="submit") Delete      

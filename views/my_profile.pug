@@ -1,0 +1,35 @@
+extends layout
+
+block content
+    div.row
+        div.container.col-md-8.col-sm-12.px-4.py-4.card-canvas
+            p.h4.ml-2.pl-5.pt-2 My Profile
+            div.row.d-flex.flex-column.align-items-center.pb-3.pt-5
+                div.container.w-75
+                    div.d-flex.justify-content-between.mb-3
+                        p.h5 USERNAME:
+                        span.d-flex
+                            p.h6.mr-3 #{currentUser.username}
+                            i.pt-1.fa.fa-pencil(aria-hidden='true')
+                    hr.divider
+                    div.d-flex.justify-content-between
+                        p.h5 FULL NAME:
+                        span.d-flex
+                            p.h6.mr-3 #{currentUser.firstName} #{currentUser.lastName}
+                            i.pt-1.fa.fa-pencil(aria-hidden='true')
+                    hr.divider
+                    div.d-flex.justify-content-between
+                        p.h5 NO. OF MESSAGES:
+                        p.h6 ---
+                    hr.divider
+                    div.d-flex.justify-content-between
+                        p.h5 DATE JOINED:
+                        p.h6 ---
+                    hr.divider
+                    div.d-flex.justify-content-between
+                        p.h5 MEMBER LEVEL
+                        if (currentUser.isAdmin)
+                            p.h6 #{currentUser.memberLevel} (ADMIN)
+                        else
+                            p.h6 #{currentUser.memberLevel}
+                    hr.divider

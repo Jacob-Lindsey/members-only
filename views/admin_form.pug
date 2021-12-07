@@ -1,0 +1,22 @@
+extends layout
+
+block content
+    section#admin
+        div.container
+            div.row.d-flex.flex-column.align-items-center
+                div.col-md-12.form-canvas
+                    div.form-wrap
+                        p.h2 Admin Dashboard
+                        form#login-form(action="/login" method='POST' autocomplete='on')
+                            div.form-group.mt-4
+                                label.sr-only(for='field1') Field 1
+                                input#field1.form-control(type='text' name='field1' placeholder='Field 1')
+                            div.form-group.mt-4
+                                label.sr-only(for='field2') Field 2
+                                input#field2.form-control(type='text' name='field2' placeholder='Field 2')
+                            div.form-group.mt-4
+                                label.sr-only(for="field3") Field 3
+                                input#field3.form-control(type='text' name='field3' placeholder='Field 3')
+                            div.d-flex.justify-content-start
+                                button.btn.btn-outline-warning.mr-3(type='button') Close
+                                button.btn.btn-outline-success(type='button') Confirm

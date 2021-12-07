@@ -1,0 +1,49 @@
+doctype html
+html
+  head
+    title= title
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css", integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z", crossorigin="anonymous")
+    script(src="https://code.jquery.com/jquery-3.5.1.slim.min.js", integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj", crossorigin="anonymous")
+    script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js", integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV", crossorigin="anonymous")
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css") 
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/reset.css')
+  body.container-fluid.position-relative.bg-dark.text-light
+    div.container-lg.position-relative
+      nav.navbar.navbar-expand-lg.mb-5.sticky-top.bg-dark
+        a(href="/").title.navbar-brand.h3
+          h4 PADDY'S PUB(lic) FORUM
+        button.navbar-toggler(type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation")
+          span
+            i.fa.fa-bars.toggle-icon
+        if (!currentUser)
+          ul.navbar-nav.ml-auto
+            li.nav-item
+              a(href="/login").nav-link Login
+            li.nav-item
+              a(href="/register").nav-link Register
+        else
+          div#navbarSupportedContent.collapse.navbar-collapse
+            ul.navbar-nav.ml-auto.d-flex
+              li.nav-item.create-message.mr-2
+                a(href="/create-message").nav-link + Create Message
+              li.nav-item.mr-2
+                a(href="/members").nav-link Members
+              li.nav-item.d-flex.align-items-center.mr-2
+                a(href="/my-profile").nav-link #{currentUser.username}
+                if (currentUser.isAdmin)
+                  span.badge.badge-pill.badge-danger.text-dark.px-2.py-1.mr-2.badge-text.h-50 ADMIN 
+                else
+                  span.badge.badge-pill.badge-warning.text-dark.px-2.py-1.badge-text.h-50 #{currentUser.memberLevel}
+              if (currentUser.isAdmin)
+                li.nav-item.mr-2
+                  a(href="/admin").nav-link Admin Dashboard
+              else
+                li.nav-item.mr-2
+                  a(href="/upgrade").nav-link Upgrade Status
+              li.nav-item
+                a(href="/logout").nav-link Logout
+
+      block content
