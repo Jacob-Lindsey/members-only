@@ -4,6 +4,13 @@ block content
 
   if (messages)
     div.container.d-flex.flex-column.align-items-center
+      if (currentUser && currentUser.memberLevel == 0)
+        div.darkest-bg.d-flex.w-75.mb-4.px-2.pb-3.pt-4
+          div.message-wrapper-left
+            div.message-wrapper-right.w-100.position-relative
+              p.h4.px-1.pb-2.message-title Welcome to Paddy's Club!
+              p.pl-4.pr-3.py-2.message-text You are now a member of our exclusive and very classy digital bar. Head over to the #[a(href='/upgrade') member status] page and enter #[code.text-warning milksteak] to unlock more features!
+
 
       each message in messages
         div.message-wrapper.d-flex.w-75.px-2.pb-3.pt-4

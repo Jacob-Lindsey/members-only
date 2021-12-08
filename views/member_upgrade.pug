@@ -14,9 +14,11 @@ block content
                         form#login-form(action="/upgrade" method='POST')
                             div.form-group.mt-4.pr-5
                                 label.sr-only(for='secretCode') Enter your upgrade code
-                                input#secretCode.form-control.bg-dark.text-light(type='text' name='secretCode' placeholder='Enter your upgrade code')
+                                input#secretCode.form-control.bg-dark.text-light(type='text' name='secretCode' required='true' placeholder='Enter your upgrade code')
+                                if (secretCodeError)
+                                    span.text-danger.lh-2 #{secretCodeError}
                             div.d-flex
-                                input#btn-login.btn.btn-outline-success.btn-lg.mt-4.mr-4(type='submit' value='Upgrade')
+                                button#btn-login.btn.btn-outline-success.btn-lg.mt-4.mr-4(type='submit') Upgrade
                                 input#btn-login.btn.btn-outline-danger.btn-lg.mt-4(type='reset' value='Reset')
                     else
                         p Welcome Back #{memberUser.firstName}

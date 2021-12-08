@@ -9,18 +9,27 @@ block content
                         p.h2 &nbsp;&nbsp;&nbsp;Create a new account&nbsp;&nbsp;&nbsp;
                         form#login-form(action="/register" method='POST' autocomplete='on')
                             div.form-group.mt-4
+                                label.sr-only(for='username') Username
+                                input#username.form-control(type='text' name='username' placeholder='Username')
+                                if (error)
+                                    span.text-danger.lh-2 #{error}
+                            div.form-group.mt-4
                                 label.sr-only(for='firstName') First Name
                                 input#firstName.form-control(type='text' name='firstName' placeholder='First Name')
                             div.form-group.mt-4
                                 label.sr-only(for='lastName') Last Name
                                 input#lastName.form-control(type='text' name='lastName' placeholder='Last Name')
                             div.form-group.mt-4
-                                label.sr-only(for='username') Username
-                                input#email.form-control(type='email' name='email' placeholder='Username')
-                            div.form-group.mt-4
                                 label.sr-only(for='password') Password
                                 input#password.form-control(type='password' name='password' placeholder='Password')
+                            div.form-group.mt-4
+                                label.sr-only(for='confirmPassword') Confirm Password
+                                input#confirmPassword.form-control(type='password' name='confirmPassword' placeholder='Confirm Password')
+                            if (passwordConfirmError)
+                                span.text-danger.lh-2 #{passwordConfirmError}
                             div.form-check
                                 input#showPassword.form-check-input(type='checkbox' value='')
                                 label.form-check-label(for="showPassword") Show password
                             input#btn-login.btn.btn-outline-info.btn-lg.btn-block.mt-4(type='submit' value='Register')
+
+    script(src='javascripts/togglePasswordVisibility.js')

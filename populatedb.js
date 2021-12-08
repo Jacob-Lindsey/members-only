@@ -76,6 +76,9 @@ function createUsers(cb) {
     function(callback) {
         userCreate("pantzzzz", "Password1234", 3, "Jacob", "Lindsey", callback);
     },
+    function(callback) {
+        userCreate("test", "Qweqwe123123", 0, "Test", "User", callback);
+    },
   ], cb);
 }
 

@@ -16,7 +16,7 @@ router.post("/delete-message/:id", message_controller.delete_message_post);
 
 /// ----------- REGISTER ---------- ///
 router.get("/register", auth_controller.register_get);
-/* router.post("/register", auth_controller.register_post); */
+router.post("/register", auth_controller.register_post);
 
 /// ----------- LOGIN/LOGOUT ---------- ///
 router.get("/login", auth_controller.login_get);
@@ -27,7 +27,7 @@ router.get("/logout", auth_controller.logout_get);
 router.get("/members", user_controller.all_members_get);
 router.get("/member/:id", user_controller.member_get);
 router.get("/upgrade", user_controller.member_upgrade_get);
-/* router.post("/upgrade", user_controller.member_upgrade_post); */
+router.post("/upgrade", user_controller.member_upgrade_post);
 
 /// ------------- MY PROFILE ------------ ///
 router.get("/my-profile", user_controller.my_profile_get);
